@@ -1,0 +1,25 @@
+.header__title {
+  background-color: gainsboro;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* JS======================================================= */
+.modal {
+  display: none;
+}
+.modal-block {
+  display: none;
+}
+.modal--show {
+  display: block;
+}
+.back-button-open {
+  background-color: #81ffff;
+  color: #299fca;
+}
+.back-button-clouse {
+  background-color: #299fca;
+  color: #81ffff;
+}
