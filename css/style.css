@@ -9,6 +9,7 @@
   padding: 8px 10px;
   margin: 20px auto;
   cursor: pointer;
+  border-radius: 10px;
 }
 .todo__button:hover {
   transition: all 0.2s linear;
@@ -20,14 +21,13 @@
   border-color: unset;
 }
 .todo__button {
-  width: 10%;
-
   padding: 8px 10px;
   margin-left: 5%;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 0;
   width: 10%;
+  border-radius: 10px;
 }
 /* .todo__ol {
   background-color: white;
