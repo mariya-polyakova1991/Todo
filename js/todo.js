@@ -32,3 +32,14 @@ buttonAdd.addEventListener("click", function (evt) {
     input.value = "";
   }
 });
+
+document.addEventListener("keydown", function (evt) {
+  if ((evt.keyCode === 13) & (!input.value == "")) {
+    console.log("=======button====");
+    let li = document.createElement("li");
+    li.className = "alert";
+    li.innerHTML = input.value;
+    list.prepend(li);
+    input.value = "";
+  }
+});
