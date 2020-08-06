@@ -25,8 +25,15 @@
       <div class="header__title">TODO</div>
     </header>
     <main>
-      <input id="task" /><button id="add">Add</button>
-      <div id="todos"></div>
+      <div class="container">
+        <input class="todo__input" required id="task" /><button
+          class="todo__button"
+          id="add"
+        >
+          Add
+        </button>
+        <ol id="ol" class="todo__ol"></ol>
+      </div>
     </main>
     <script src="js/todo.js"></script>
   </body>

@@ -1,6 +1,6 @@
 .container {
   max-width: 1920px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -9,16 +9,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-a {
-  text-decoration: none;
-  font-weight: bold;
-}
-input:hover,
-textarea:hover,
-select:hover {
-  transition: all 0.2s linear;
-  border-color: unset;
-}
+
 input:focus,
 textarea:focus,
 select:focus,

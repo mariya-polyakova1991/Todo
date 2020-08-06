@@ -4,22 +4,77 @@
   font-weight: bold;
   text-align: center;
 }
+.todo__input {
+  width: 85%;
+  padding: 8px 10px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+.todo__button:hover {
+  transition: all 0.2s linear;
+  border-color: unset;
+  background-color: #8fd4c1;
+}
+.todo__input:hover {
+  transition: all 0.2s linear;
+  border-color: unset;
+}
+.todo__button {
+  width: 10%;
 
-/* JS======================================================= */
-.modal {
-  display: none;
+  padding: 8px 10px;
+  margin-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 0;
+  width: 10%;
 }
-.modal-block {
-  display: none;
+/* .todo__ol {
+  background-color: white;
+  list-style-type: circle;
+  list-style: square;
 }
-.modal--show {
+
+.alert {
+  padding: 10px;
+} */
+.todo__ol {
+  counter-reset: li;
+  list-style: none;
+  padding: 0;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.alert {
+  position: relative;
   display: block;
+  padding: 0.4em 0.4em 0.4em 2em;
+  margin: 0.5em 0;
+  background: white;
+  color: #444;
+  text-decoration: none;
+  border-radius: 0.3em;
+  transition: 0.3s ease-out;
 }
-.back-button-open {
-  background-color: #81ffff;
-  color: #299fca;
+.alert:hover {
+  background: #e9e4e0;
 }
-.back-button-clouse {
-  background-color: #299fca;
-  color: #81ffff;
+.alert:hover:before {
+  transform: rotate(360deg);
+}
+.alert:before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: #8fd4c1;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: 0.3em solid white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2em;
+  transition: all 0.3s ease-out;
 }
