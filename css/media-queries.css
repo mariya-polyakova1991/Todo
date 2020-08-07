@@ -8,10 +8,16 @@
   html {
     font-size: 12px;
   }
+  .todo__input {
+    width: 80%;
+  }
 }
 
 @media (max-width: 810px) {
   html {
     font-size: 11px;
+  }
+  .todo__input {
+    width: 60%;
   }
 }

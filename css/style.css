@@ -11,7 +11,7 @@
   cursor: pointer;
   border-radius: 10px;
 }
-.todo__button:hover {
+/* .todo__button:hover {
   transition: all 0.2s linear;
   border-color: unset;
   background-color: #8fd4c1;
@@ -28,16 +28,8 @@
   margin-right: 0;
   width: 10%;
   border-radius: 10px;
-}
-/* .todo__ol {
-  background-color: white;
-  list-style-type: circle;
-  list-style: square;
-}
-
-.alert {
-  padding: 10px;
 } */
+
 .todo__ol {
   counter-reset: li;
   list-style: none;
@@ -77,4 +69,41 @@
   font-weight: bold;
   border-radius: 2em;
   transition: all 0.3s ease-out;
+}
+
+.todo__button {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 7px 20px;
+  margin: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #8fd4c1;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  color: #8fd4c1;
+  transition: 0.2s ease-in-out;
+}
+.todo__button:before {
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5)
+  );
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.todo__button:hover {
+  background: #8fd4c1;
+  color: #fff;
+}
+.todo__button:hover:before {
+  left: 150px;
+  transition: 0.5s ease-in-out;
 }
