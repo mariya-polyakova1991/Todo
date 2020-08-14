@@ -26,13 +26,20 @@
     </header>
     <main>
       <div class="container">
-        <input class="todo__input" required id="task" />
+        <input class="todo__input" required id="input__task" />
         <button class="todo__button" id="add">
           +
         </button>
         <ol id="ol" class="todo__ol"></ol>
+        <div class="todo__buttons">
+          <button class="todo__button" id="all">All</button>
+          <button class="todo__button" id="active">Active</button>
+          <button class="todo__button" id="completed">Completed</button>
+        </div>
       </div>
     </main>
+    <script src="js/variables.js"></script>
     <script src="js/todo.js"></script>
+    <script src="js/render.js"></script>
   </body>
 </html>

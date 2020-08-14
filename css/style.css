@@ -11,24 +11,6 @@
   cursor: pointer;
   border-radius: 10px;
 }
-/* .todo__button:hover {
-  transition: all 0.2s linear;
-  border-color: unset;
-  background-color: #8fd4c1;
-}
-.todo__input:hover {
-  transition: all 0.2s linear;
-  border-color: unset;
-}
-.todo__button {
-  padding: 8px 10px;
-  margin-left: 5%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 0;
-  width: 10%;
-  border-radius: 10px;
-} */
 
 .todo__ol {
   counter-reset: li;
@@ -36,7 +18,20 @@
   padding: 0;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-.alert {
+.todo__item__del {
+  text-decoration: line-through;
+  text-decoration-color: red;
+  position: relative;
+  display: block;
+  padding: 0.4em 0.4em 0.4em 2em;
+  margin: 0.5em 0;
+  background: white;
+  color: #444;
+  border-radius: 0.3em;
+  transition: 0.3s ease-out;
+}
+
+.todo__item {
   position: relative;
   display: block;
   padding: 0.4em 0.4em 0.4em 2em;
@@ -47,13 +42,13 @@
   border-radius: 0.3em;
   transition: 0.3s ease-out;
 }
-.alert:hover {
+.todo__item:hover {
   background: #e9e4e0;
 }
-.alert:hover:before {
+.todo__item:hover:before {
   transform: rotate(360deg);
 }
-.alert:before {
+.todo__item:before {
   content: counter(li);
   counter-increment: li;
   position: absolute;
@@ -106,4 +101,18 @@
 .todo__button:hover:before {
   left: 150px;
   transition: 0.5s ease-in-out;
+}
+
+.todo__all {
+  display: flex;
+}
+
+.todo__all__button {
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.todo__none {
+  display: none;
 }
