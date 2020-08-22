@@ -5,6 +5,8 @@ const {
   allList,
   activeList,
   completedList,
+  pages,
+  paginItem,
 } = _VARIABLES;
 
 function ToDoItem(value) {

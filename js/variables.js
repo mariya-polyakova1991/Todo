@@ -5,4 +5,6 @@ var _VARIABLES = {
   allList: document.getElementById("all"),
   activeList: document.getElementById("active"),
   completedList: document.getElementById("completed"),
+  pages: document.getElementById("pages"),
+  paginItem: document.getElementsByClassName("page__noActive"),
 };

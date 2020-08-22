@@ -12,13 +12,16 @@ const Filter = new FilterC();
 
 allList.addEventListener("click", function () {
   Filter.status = FilterC.STATUS.all;
+  toDoListPagination.activePage = 1;
   ToDoListController.render();
 });
 activeList.addEventListener("click", function () {
   Filter.status = FilterC.STATUS.active;
+  toDoListPagination.activePage = 1;
   ToDoListController.render();
 });
 completedList.addEventListener("click", function () {
   Filter.status = FilterC.STATUS.inActive;
+  toDoListPagination.activePage = 1;
   ToDoListController.render();
 });

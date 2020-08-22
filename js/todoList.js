@@ -26,10 +26,17 @@ ToDoList.prototype.render = function () {
     return true;
   });
 
-  // Pagination.render(todoList.length)
-  // Pagination.activePage
-  // todoList = SomeClass.getArray(todoList, Pagination.activePage)
-  todoList.forEach((todoItem, i) => {
+  const listBlock = todoList;
+  let indexStart = (toDoListPagination.activePage - 1) * 5;
+  let indexEnd = indexStart + 5;
+  const newItemList = listBlock.slice(indexStart, indexEnd);
+
+  console.log("===========", toDoListPagination.activePage);
+
+  toDoListPagination.render(todoList.length);
+  // toDoListPagination.page;
+  // todoList = SomeClass.getArray(todoList, toDoListPagination.activePage);
+  newItemList.forEach((todoItem) => {
     const li = document.createElement("li");
     li.classList.add(todoItem.isActive ? "todo__item" : "todo__item__del");
 
