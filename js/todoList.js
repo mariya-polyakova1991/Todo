@@ -42,9 +42,10 @@ ToDoList.prototype.render = function () {
     const li = document.createElement("li");
     const num = document.createElement("span");
     num.textContent = `${i + 1 + (toDoListPagination.activePage - 1) * 5}.`;
-    const deleteButton = document.createElement("button");
+    const deleteButton = document.createElement("span");
     const val = document.createTextNode(todoItem.value);
 
+    num.classList.add("number__li");
     li.classList.add(todoItem.isActive ? "todo__item" : "todo__item__del");
     deleteButton.classList.add("delite__button");
     li.append(val);
@@ -53,7 +54,7 @@ ToDoList.prototype.render = function () {
 
     li.prepend(num);
     div.prepend(li);
-    div.prepend(deleteButton);
+    li.append(deleteButton);
     list.append(div);
 
     li.addEventListener("click", () => {

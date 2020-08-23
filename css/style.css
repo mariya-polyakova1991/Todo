@@ -36,7 +36,7 @@
   position: relative;
   display: block;
   padding: 0.4em 0.4em 0.4em 2em;
-  margin: 0.5em 0;
+  margin: 1em 0;
   background: white;
   color: #444;
   text-decoration: none;
@@ -48,26 +48,21 @@
   background: #e9e4e0;
   cursor: pointer;
 }
-.todo__item:hover:before {
-  transform: rotate(360deg);
-}
-/* .todo__item:before {
-  content: counter(li);
-  counter-increment: li;
+
+.number__li {
   position: absolute;
   left: -1.3em;
   top: 50%;
   margin-top: -1.3em;
   background: #8fd4c1;
-  height: 2em;
-  width: 2em;
+  width: 3em;
   line-height: 2em;
   border: 0.3em solid white;
   text-align: center;
   font-weight: bold;
-  border-radius: 2em;
+  border-radius: 3em;
   transition: all 0.3s ease-out;
-} */
+}
 
 .todo__button {
   text-decoration: none;
@@ -161,6 +156,19 @@
 }
 
 .delite__button {
-  padding: 5px;
-  border-radius: 20px;
+  position: absolute;
+  right: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: #8fd4c1;
+  width: 3em;
+  line-height: 2em;
+  border: 0.3em solid white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3em;
+  transition: all 0.3s ease-out;
+}
+.delite__button:hover {
+  transform: rotate(360deg);
 }
