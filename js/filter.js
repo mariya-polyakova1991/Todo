@@ -23,5 +23,7 @@ activeList.addEventListener("click", function () {
 completedList.addEventListener("click", function () {
   Filter.status = FilterC.STATUS.inActive;
   toDoListPagination.activePage = 1;
+
+  console.log("=======hhhhhhhh====");
   ToDoListController.render();
 });
