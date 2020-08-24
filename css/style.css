@@ -97,6 +97,15 @@
   background: #8fd4c1;
   color: #fff;
 }
+.todo__button__active {
+  background: #8fd4c1;
+  color: #fff;
+}
+.todo__button:active {
+  background: #8fd4c1;
+  color: #fff;
+}
+
 .todo__button:hover:before {
   left: 150px;
   transition: 0.5s ease-in-out;
@@ -155,7 +164,7 @@
   font-weight: bold;
 }
 
-.delite__button {
+.delete__button {
   position: absolute;
   right: -1.3em;
   top: 50%;
@@ -169,6 +178,6 @@
   border-radius: 3em;
   transition: all 0.3s ease-out;
 }
-.delite__button:hover {
+.delete__button:hover {
   transform: rotate(360deg);
 }

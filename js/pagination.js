@@ -18,20 +18,25 @@ Pagination.prototype.deleteClass = function () {
 Pagination.prototype.render = function (length) {
   this.cleanUpList();
   const count = length;
+
+  console.log("=======count====", count);
   let maxElement = 5;
   let page = 1;
   let pageNumbers = Math.ceil(count / maxElement);
   for (let i = 0; i < pageNumbers; i++) {
     if (count > 5) {
       const li = document.createElement("li");
-      li.classList.add("page__noActive");
+      li.classList.add(
+        this.activePage === i + 1 ? "page__active" : "page__noActive"
+      );
+
       const val = document.createTextNode(page);
       li.append(val);
+
       li.addEventListener("click", () => {
         this.deleteClass();
         this.activePage = i + 1;
         ToDoListController.render();
-        li.classList.add("page__active");
       });
       page++;
       pages.append(li);

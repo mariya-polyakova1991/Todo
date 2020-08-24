@@ -10,20 +10,30 @@ FilterC.STATUS = {
 
 const Filter = new FilterC();
 
-allList.addEventListener("click", function () {
-  Filter.status = FilterC.STATUS.all;
-  toDoListPagination.activePage = 1;
-  ToDoListController.render();
-});
-activeList.addEventListener("click", function () {
-  Filter.status = FilterC.STATUS.active;
-  toDoListPagination.activePage = 1;
-  ToDoListController.render();
-});
-completedList.addEventListener("click", function () {
-  Filter.status = FilterC.STATUS.inActive;
-  toDoListPagination.activePage = 1;
+allList.classList.add("todo__button__active");
 
-  console.log("=======hhhhhhhh====");
-  ToDoListController.render();
-});
+function removeClass(cls) {
+  [activeList, allList, completedList].forEach((btn) => {
+    btn.classList.remove(cls);
+  });
+}
+
+function handlerFilterButton(status) {
+  return function () {
+    Filter.status = status;
+    toDoListPagination.activePage = 1;
+    removeClass("todo__button__active");
+    this.classList.add("todo__button__active");
+    ToDoListController.render();
+  };
+}
+
+allList.addEventListener("click", handlerFilterButton(FilterC.STATUS.all));
+activeList.addEventListener(
+  "click",
+  handlerFilterButton(FilterC.STATUS.active)
+);
+completedList.addEventListener(
+  "click",
+  handlerFilterButton(FilterC.STATUS.inActive)
+);

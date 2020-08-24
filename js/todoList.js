@@ -11,18 +11,50 @@ ToDoList.prototype.cleanUpList = function () {
     list.removeChild(list.firstChild);
   }
 };
-ToDoList.prototype.arrSlice = function (arr) {
-  const listBlock = arr;
+
+ToDoList.prototype.getTodosByPage = function (todoList) {
   let indexStart = (toDoListPagination.activePage - 1) * 5;
   let indexEnd = indexStart + 5;
-  const pieceArr = listBlock.slice(indexStart, indexEnd);
-  return pieceArr;
+  const list = todoList.slice(indexStart, indexEnd);
+  return list;
 };
-// ToDoList.prototype.creatButton = function () {};
+
+ToDoList.prototype.getNumLabel = function (index) {
+  return `${index + 1 + (toDoListPagination.activePage - 1) * 5}.`;
+};
+
+ToDoList.prototype.createTodoMarkUp = function (todoItem, index) {
+  const li = document.createElement("li");
+  const num = document.createElement("span");
+  num.textContent = this.getNumLabel(index);
+  const deleteButton = document.createElement("span");
+  const val = document.createTextNode(todoItem.value);
+
+  num.classList.add("number__li");
+  li.classList.add(todoItem.isActive ? "todo__item" : "todo__item__del");
+  deleteButton.classList.add("delete__button");
+  li.append(val);
+
+  deleteButton.append(document.createTextNode("x"));
+
+  li.append(num);
+  li.append(deleteButton);
+
+  li.addEventListener("click", () => {
+    todoItem.isActive = !todoItem.isActive;
+    this.render();
+  });
+  deleteButton.addEventListener("click", () => {
+    this.list.splice(index, 1);
+    this.render();
+  });
+  return li;
+};
+
 ToDoList.prototype.render = function () {
   this.cleanUpList();
 
-  const todoList = this.list.filter((todoItem) => {
+  let todoList = this.list.filter((todoItem) => {
     if (Filter.status === FilterC.STATUS.active) {
       return todoItem.isActive;
     }
@@ -31,45 +63,16 @@ ToDoList.prototype.render = function () {
     }
     return true;
   });
-
-  const arrToDoList = this.arrSlice(todoList);
-
   toDoListPagination.render(todoList.length);
-  // toDoListPagination.page;
-  // todoList = SomeClass.getArray(todoList, toDoListPagination.activePage);
-  arrToDoList.forEach((todoItem, i) => {
-    const div = document.createElement("div");
-    const li = document.createElement("li");
-    const num = document.createElement("span");
-    num.textContent = `${i + 1 + (toDoListPagination.activePage - 1) * 5}.`;
-    const deleteButton = document.createElement("span");
-    const val = document.createTextNode(todoItem.value);
 
-    num.classList.add("number__li");
-    li.classList.add(todoItem.isActive ? "todo__item" : "todo__item__del");
-    deleteButton.classList.add("delite__button");
-    li.append(val);
+  todoList = this.getTodosByPage(todoList);
 
-    deleteButton.append(document.createTextNode("x"));
-
-    li.prepend(num);
-    div.prepend(li);
-    li.append(deleteButton);
-    list.append(div);
-
-    li.addEventListener("click", () => {
-      todoItem.isActive = !todoItem.isActive;
-      this.render();
-
-      // this.list = this.list.filter((todo) => todo.id !== todoItem.id);
-
-      // this.list.unshift(todoItem);
-    });
-    deleteButton.addEventListener("click", (i) => {
-      this.list.splice(i, 1);
-      this.render();
-    });
+  const fragment = document.createDocumentFragment();
+  todoList.forEach((todoItem, i) => {
+    const tagLi = this.createTodoMarkUp(todoItem, i);
+    fragment.append(tagLi);
   });
+  list.append(fragment);
 };
 
 var ToDoListController = new ToDoList();
