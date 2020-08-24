@@ -79,6 +79,13 @@
   transition: 0.2s ease-in-out;
   font-weight: bold;
 }
+
+@media (max-width: 500px) {
+  .todo__button {
+    margin: 10px auto;
+  }
+}
+
 .todo__button:before {
   content: "";
   background: linear-gradient(
