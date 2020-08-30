@@ -19,7 +19,6 @@ function createTask() {
   const todoItem = new ToDoItem(input.value);
   ToDoListController.addTodoItem(todoItem);
   ToDoListController.render();
-
   input.value = "";
 }
 

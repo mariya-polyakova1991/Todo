@@ -1,5 +1,6 @@
 function ToDoList() {
-  this.list = [];
+  const list = JSON.parse(localStorage.getItem("list")) || [];
+  this.list = list;
 }
 
 ToDoList.prototype.addTodoItem = function (todoItem) {
@@ -51,9 +52,13 @@ ToDoList.prototype.createTodoMarkUp = function (todoItem, index) {
   return li;
 };
 
+ToDoList.prototype.saveListToStore = function () {
+  localStorage.setItem("list", JSON.stringify(ToDoListController.list));
+};
+
 ToDoList.prototype.render = function () {
   this.cleanUpList();
-
+  this.saveListToStore();
   let todoList = this.list.filter((todoItem) => {
     if (Filter.status === FilterC.STATUS.active) {
       return todoItem.isActive;

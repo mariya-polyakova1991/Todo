@@ -1,5 +1,5 @@
 function FilterC() {
-  this.status = 1;
+  this.status = JSON.parse(localStorage.getItem("filterStatus")) || 1;
 }
 
 FilterC.STATUS = {
@@ -10,8 +10,6 @@ FilterC.STATUS = {
 
 const Filter = new FilterC();
 
-allList.classList.add("todo__button__active");
-
 function removeClass(cls) {
   [activeList, allList, completedList].forEach((btn) => {
     btn.classList.remove(cls);
@@ -21,9 +19,12 @@ function removeClass(cls) {
 function handlerFilterButton(status) {
   return function () {
     Filter.status = status;
-    toDoListPagination.activePage = 1;
     removeClass("todo__button__active");
     this.classList.add("todo__button__active");
+    const filterStatus = localStorage.setItem(
+      "filterStatus",
+      JSON.stringify(Filter.status)
+    );
     ToDoListController.render();
   };
 }

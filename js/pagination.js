@@ -1,6 +1,6 @@
 function Pagination() {
   this.isNoActive = true;
-  this.activePage = 1;
+  this.activePage = JSON.parse(localStorage.getItem("activePage")) || 1;
 }
 
 Pagination.prototype.cleanUpList = function () {
@@ -36,6 +36,12 @@ Pagination.prototype.render = function (length) {
       li.addEventListener("click", () => {
         this.deleteClass();
         this.activePage = i + 1;
+
+        const activePage = localStorage.setItem(
+          "activePage",
+          JSON.stringify(toDoListPagination.activePage)
+        );
+
         ToDoListController.render();
       });
       page++;
@@ -45,3 +51,5 @@ Pagination.prototype.render = function (length) {
 };
 
 var toDoListPagination = new Pagination();
+
+console.log("====pagination=======", toDoListPagination);
