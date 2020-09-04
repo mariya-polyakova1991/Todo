@@ -10,7 +10,7 @@ Pagination.prototype.cleanUpList = function () {
 };
 
 Pagination.prototype.deleteClass = function () {
-  [...paginItem].forEach((element) => {
+  [...pageButtons].forEach((element) => {
     element.classList.remove("page__active");
   });
 };
@@ -19,10 +19,10 @@ Pagination.prototype.render = function (length) {
   this.cleanUpList();
   const count = length;
 
-  console.log("=======count====", count);
-  let maxElement = 5;
+  const maxElement = 5;
   let page = 1;
-  let pageNumbers = Math.ceil(count / maxElement);
+  const pageNumbers = Math.ceil(count / maxElement);
+
   for (let i = 0; i < pageNumbers; i++) {
     if (count > 5) {
       const li = document.createElement("li");
@@ -51,5 +51,3 @@ Pagination.prototype.render = function (length) {
 };
 
 var toDoListPagination = new Pagination();
-
-console.log("====pagination=======", toDoListPagination);

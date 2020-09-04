@@ -1,6 +1,15 @@
+const buttons = [allList, activeList, completedList];
+
 function FilterC() {
   this.status = JSON.parse(localStorage.getItem("filterStatus")) || 1;
 }
+
+FilterC.prototype.setInitialActiveButton = function () {
+  const index = this.status - 1;
+  const activeButton = buttons[index];
+
+  activeButton.classList.add("todo__button__active");
+};
 
 FilterC.STATUS = {
   all: 1,
@@ -8,33 +17,39 @@ FilterC.STATUS = {
   inActive: 3,
 };
 
-const Filter = new FilterC();
-
-function removeClass(cls) {
-  [activeList, allList, completedList].forEach((btn) => {
+FilterC.prototype.removeClass = function (cls) {
+  buttons.forEach((btn) => {
     btn.classList.remove(cls);
   });
-}
-
-function handlerFilterButton(status) {
+};
+FilterC.prototype.handlerFilterButton = function (status) {
   return function () {
     Filter.status = status;
-    removeClass("todo__button__active");
+    Filter.removeClass("todo__button__active");
     this.classList.add("todo__button__active");
     const filterStatus = localStorage.setItem(
       "filterStatus",
       JSON.stringify(Filter.status)
     );
+    toDoListPagination.activePage = 1;
+
     ToDoListController.render();
   };
-}
+};
+const Filter = new FilterC();
 
-allList.addEventListener("click", handlerFilterButton(FilterC.STATUS.all));
+allList.addEventListener(
+  "click",
+  Filter.handlerFilterButton(FilterC.STATUS.all)
+);
+
 activeList.addEventListener(
   "click",
-  handlerFilterButton(FilterC.STATUS.active)
+  Filter.handlerFilterButton(FilterC.STATUS.active)
 );
 completedList.addEventListener(
   "click",
-  handlerFilterButton(FilterC.STATUS.inActive)
+  Filter.handlerFilterButton(FilterC.STATUS.inActive)
 );
+
+Filter.setInitialActiveButton();

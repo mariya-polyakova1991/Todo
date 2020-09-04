@@ -15,16 +15,39 @@
       src="https://kit.fontawesome.com/b2c8fab18d.js"
       crossorigin="anonymous"
     ></script>
+
     <title>TODO</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/media-queries.css" />
+    <link rel="stylesheet" href="css/nav.css" />
   </head>
   <body>
     <header>
       <div class="header__title">TODO</div>
     </header>
     <main>
+      <div>
+        <button class="closeBtn" id="menuBtn">
+          <i class="far fa-images"></i>
+        </button>
+        <nav id="menu" class="menu__nav">
+          <ul>
+            <a href="#" id="ice"><li>Ice</li></a>
+            <a href="#" id="rainbow"><li>Rainbow</li></a>
+            <a href="#" id="forest"><li>Forest</li></a>
+            <a href="#" id="space"><li>Space</li></a>
+            <a href="#" id="panda"><li>Panda</li></a>
+            <a href="#" id="black"><li>Black</li></a>
+            <a href="#" id="blue"><li>Blue</li></a>
+            <a href="#" id="pink"><li>Pink</li></a>
+          </ul>
+          <button class="closeBtn" id="closeBtn">
+            <i class="fas fa-times-circle"></i>
+          </button>
+        </nav>
+      </div>
+
       <div class="container">
         <input class="todo__input" required id="input__task" />
         <button class="todo__button" id="add">+</button>
@@ -34,14 +57,17 @@
           <button class="todo__button" id="active">Active</button>
           <button class="todo__button" id="completed">Completed</button>
         </div>
+
         <ol id="pages" class="pages"></ol>
       </div>
     </main>
+    <script src="js/nav.js"></script>
     <script src="js/variables.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/filter.js"></script>
     <script src="js/pagination.js"></script>
     <script src="js/todoList.js"></script>
+    <script src="js/styles.js"></script>
     <script>
       ToDoListController.render();
     </script>

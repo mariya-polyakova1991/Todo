@@ -6,5 +6,17 @@ var _VARIABLES = {
   activeList: document.getElementById("active"),
   completedList: document.getElementById("completed"),
   pages: document.getElementById("pages"),
-  paginItem: document.getElementsByClassName("page__noActive"),
+  pageButtons: document.getElementsByClassName("page__noActive"),
+
+  ice: document.getElementById("ice"),
+  rainbow: document.getElementById("rainbow"),
+  forest: document.getElementById("forest"),
+  space: document.getElementById("space"),
+  black: document.getElementById("black"),
+  blue: document.getElementById("blue"),
+  pink: document.getElementById("pink"),
+  panda: document.getElementById("panda"),
+  menu: document.getElementById("menu"),
+  menuBtn: document.getElementById("menuBtn"),
+  closeBtn: document.getElementById("closeBtn"),
 };

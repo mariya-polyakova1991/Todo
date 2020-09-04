@@ -6,7 +6,18 @@ const {
   activeList,
   completedList,
   pages,
-  paginItem,
+  pageButtons,
+  ice,
+  rainbow,
+  forest,
+  space,
+  panda,
+  black,
+  blue,
+  pink,
+  menu,
+  menuBtn,
+  closeBtn,
 } = _VARIABLES;
 
 function ToDoItem(value) {
@@ -15,19 +26,20 @@ function ToDoItem(value) {
   this.isActive = true;
 }
 
-function createTask() {
-  const todoItem = new ToDoItem(input.value);
-  ToDoListController.addTodoItem(todoItem);
+ToDoItem.prototype.createTask = function () {
+  ToDoListController.addTodoItem(this);
   ToDoListController.render();
   input.value = "";
-}
+};
 
 buttonAdd.addEventListener("click", function () {
-  createTask();
+  const todoItem = new ToDoItem(input.value);
+  todoItem.createTask();
 });
 
 document.addEventListener("keydown", function (evt) {
   if ((evt.keyCode === 13) & (!input.value == "")) {
-    createTask();
+    const todoItem = new ToDoItem(input.value);
+    todoItem.createTask();
   }
 });

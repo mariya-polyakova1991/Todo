@@ -1,5 +1,6 @@
 function ToDoList() {
   const list = JSON.parse(localStorage.getItem("list")) || [];
+
   this.list = list;
 }
 
@@ -47,9 +48,33 @@ ToDoList.prototype.createTodoMarkUp = function (todoItem, index) {
   });
   deleteButton.addEventListener("click", () => {
     this.list.splice(index, 1);
+    const length = this.getLengthFilteredList();
+    const maxElement = 5;
+    const pageNumbers = Math.ceil(length / maxElement);
+    if (pageNumbers < toDoListPagination.activePage) {
+      toDoListPagination.activePage = toDoListPagination.activePage - 1;
+    }
     this.render();
   });
   return li;
+};
+
+ToDoList.prototype.getLengthFilteredList = function () {
+  const list = this.getFilteredList();
+  return list.length;
+};
+
+ToDoList.prototype.getFilteredList = function () {
+  const todoList = this.list.filter((todoItem) => {
+    if (Filter.status === FilterC.STATUS.active) {
+      return todoItem.isActive;
+    }
+    if (Filter.status === FilterC.STATUS.inActive) {
+      return !todoItem.isActive;
+    }
+    return true;
+  });
+  return todoList;
 };
 
 ToDoList.prototype.saveListToStore = function () {
@@ -59,19 +84,10 @@ ToDoList.prototype.saveListToStore = function () {
 ToDoList.prototype.render = function () {
   this.cleanUpList();
   this.saveListToStore();
-  let todoList = this.list.filter((todoItem) => {
-    if (Filter.status === FilterC.STATUS.active) {
-      return todoItem.isActive;
-    }
-    if (Filter.status === FilterC.STATUS.inActive) {
-      return !todoItem.isActive;
-    }
-    return true;
-  });
+  let todoList = this.getFilteredList();
+
   toDoListPagination.render(todoList.length);
-
   todoList = this.getTodosByPage(todoList);
-
   const fragment = document.createDocumentFragment();
   todoList.forEach((todoItem, i) => {
     const tagLi = this.createTodoMarkUp(todoItem, i);

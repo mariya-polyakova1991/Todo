@@ -1,0 +1,35 @@
+.fa-images {
+  position: absolute;
+  bottom: 10px;
+  color: white;
+  margin: 10px;
+  font-size: 3rem;
+}
+
+.menu__nav {
+  padding: 20px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: none;
+}
+.menu__nav li {
+  color: #000;
+  list-style: none;
+  font-size: large;
+}
+a {
+  text-decoration: none;
+}
+.menu__nav__open {
+  display: flex;
+  justify-content: space-between;
+}
+.closeBtn {
+  border: none;
+  background-color: transparent;
+}
+.fa-times-circle {
+  font-size: 2rem;
+}
