@@ -4,15 +4,14 @@ function FixImage() {
 }
 
 FixImage.prototype.fixImage = function (img) {
+  if (img === "royalblue" || "black" || "pink") {
+    document.body.style.backgroundImage = "none";
+    document.body.style.backgroundColor = img;
+  }
   document.body.style.backgroundImage = img;
-  menu.classList.remove("menu__nav__open");
-  const imgSave = localStorage.setItem("Img", JSON.stringify(img));
-};
-FixImage.prototype.fixColor = function (color) {
-  document.body.style.backgroundColor = color;
-  document.body.style.backgroundImage = "none";
 
   menu.classList.remove("menu__nav__open");
+  const imgSave = localStorage.setItem("imgSave", JSON.stringify(img));
 };
 
 panda.addEventListener("click", function () {
@@ -38,13 +37,14 @@ ice.addEventListener("click", function () {
 });
 
 black.addEventListener("click", function () {
-  ImgController.fixColor("black");
+  ImgController.fixImage("black");
 });
 blue.addEventListener("click", function () {
-  ImgController.fixColor("royalblue");
+  ImgController.fixImage("royalblue");
 });
 pink.addEventListener("click", function () {
-  ImgController.fixColor("pink");
+  ImgController.fixImage("pink");
 });
 
 var ImgController = new FixImage();
+ImgController.fixImage(ImgController.img);
